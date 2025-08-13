@@ -14,9 +14,23 @@ Done条件: npm run dev で初期ページ表示
 フェーズ1：Markdown基盤（mdsvex＋ハイライト）
 
 目的: .md をレンダリングできる状態
-やること: mdsvex設定、Shiki/rehype系のハイライト導入、hello-world.md 作成
-Done条件: 仮ルートで本文とコードが表示
-成果物: 記事1本＋スタイル最小
+やること:
+Markdown基盤（mdsvex＋Shikiハイライト）
+
+1. mdsvex設定
+   • .md を Svelteコンポーネントとして扱えるようにする
+   • rehype-pretty-code（Shiki）でシンタックスハイライト
+2. Markdown記事作成
+   • src/lib/posts/hello-world.md
+   → frontmatter付き（title, date, description, tags, draft）
+   • 見出しとコードブロックを含める
+3. 仮ルートで記事表示
+   • routes/test-md/+page.svelte を作り、記事を読み込んで表示
+4. ブラウザで表示確認
+   • frontmatter情報が取得できる
+   • コードブロックがハイライトされている
+   Done条件: 仮ルートで本文とコードが表示
+   成果物: 記事1本＋スタイル最小
 
 ⸻
 

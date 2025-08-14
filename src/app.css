@@ -1,2 +1,20 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
+
+/* rehype-pretty-code の最小スタイル */
+code[data-theme] {
+	color: var(--shiki-foreground);
+	background: var(--shiki-background);
+}
+pre[data-theme] {
+	color: var(--shiki-foreground);
+	background: var(--shiki-background);
+}
+pre[data-theme] {
+	padding: 1rem;
+	border-radius: 0.5rem;
+	overflow: auto;
+}
+pre[data-theme] code {
+	display: grid;
+}

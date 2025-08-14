@@ -18,15 +18,49 @@ Done条件: npm run dev で初期ページ表示
 Markdown基盤（mdsvex＋Shikiハイライト）
 
 1. mdsvex設定
-   • .md を Svelteコンポーネントとして扱えるようにする
-   • rehype-pretty-code（Shiki）でシンタックスハイライト
-2. Markdown記事作成
+
+- .md を Svelteコンポーネントとして扱えるようにする
+- rehype-pretty-code（Shiki）でシンタックスハイライト
+
+rehype-pretty-code：
+
+- 目的：Markdown内のコードブロックを解析してハイライトする
+- 特徴：
+  - rehype（HTML変換後の処理）として動く
+  - テーマ指定可能（github-dark, one-dark-proなど）
+  - 行番号、ハイライト行、コピー用ボタンなどの追加機能もサポート
+- 使い方：
+  - mdsvexがMarkdownをHTMLに変換
+  - そのHTMLをrehype-pretty-codeが受け取る
+  - コードブロック部分にテーマと装飾を適用
+
+shiki：
+
+- 目的：シンタックスハイライト処理を行うエンジン
+- 特徴：
+  - VS Codeと同じハイライトテーマを利用可能
+  - 高速化つ言語対応数が多い
+  - rehype-pretty-code は内部的に shiki を使って色付け
+- 関係性：
+  - rehype-pretty-code = ハイライト + 装飾の管理者
+  - shiki = 色付けの職人
+
+インストールコマンド
+
+```zsh
+npm i -D rehype-pretty-code
+npm i -D shiki
+```
+
+プロジェクト直下に mdsvex.config.js ファイルを作成し、mdsvexにrehype-pretty-codeを組み込む設定を追加する。
+
+1. Markdown記事作成
    • src/lib/posts/hello-world.md
    → frontmatter付き（title, date, description, tags, draft）
    • 見出しとコードブロックを含める
-3. 仮ルートで記事表示
+2. 仮ルートで記事表示
    • routes/test-md/+page.svelte を作り、記事を読み込んで表示
-4. ブラウザで表示確認
+3. ブラウザで表示確認
    • frontmatter情報が取得できる
    • コードブロックがハイライトされている
    Done条件: 仮ルートで本文とコードが表示

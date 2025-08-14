@@ -10,4 +10,10 @@ declare global {
 	}
 }
 
+declare module '*.md' {
+	const Component: any;
+	export const metadata: Record<string, any>;
+	export default Component;
+}
+
 export {};

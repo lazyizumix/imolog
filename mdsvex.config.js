@@ -8,7 +8,7 @@ const options = {
     [
       rehypePrettyCode,
       {
-        theme: 'github-dark', // 好きなテーマに変更可
+        theme: 'aurora-x', // 好きなテーマに変更可
         keepBackground: true,
       },
     ],

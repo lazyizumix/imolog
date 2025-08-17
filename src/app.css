@@ -1,20 +1,136 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
 
+.bg-imo {
+  background-image: var(--icon-url);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: min(60vw, 560px);
+  background-attachment: fixed;
+  opacity: 0.1;
+}
+
+a {
+  color: #0aff9d;
+  text-decoration: none;
+  text-shadow: 0 0 6px rgba(10, 255, 157, 0.6);
+  background-image: liner-gradient(90deg, #00ffff, #ff00ff, #0aff9d);
+  background-size: 0% 2px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition:
+    background-size 160ms ease,
+    color 160ms ease;
+}
+
+a:hover {
+  color: #00ffff;
+  background-size: 100% 2px;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+}
+
 /* rehype-pretty-code の最小スタイル */
 code[data-theme] {
-	color: var(--shiki-foreground);
-	background: var(--shiki-background);
+  color: var(--shiki-foreground);
+  background: var(--shiki-background);
 }
 pre[data-theme] {
-	color: var(--shiki-foreground);
-	background: var(--shiki-background);
-}
-pre[data-theme] {
-	padding: 1rem;
-	border-radius: 0.5rem;
-	overflow: auto;
+  color: var(--shiki-foreground);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border-color: white;
+  overflow: auto;
 }
 pre[data-theme] code {
-	display: grid;
+  display: grid;
+}
+
+@layer base {
+  body {
+    background: linear-gradient(90deg, #0a0f1f 0%, #150021 100%);
+    color: #e0e0e0;
+  }
+}
+
+@layer utilities {
+  .prose {
+    --tw-prose-headings: #00ffff;
+    --tw-prose-body: #e0e0e0;
+    --tw-prose-links: #ff00ff;
+  }
+}
+
+/* ===== Cyberpunk theme – final polish ===== */
+@layer utilities {
+  /* Headings: neon underline gradient */
+  .prose h1,
+  .prose h2 {
+    position: relative;
+  }
+  .prose h1::after,
+  .prose h2::after {
+    content: '';
+    display: block;
+    height: 2px;
+    margin-top: 0.4rem;
+    background: linear-gradient(90deg, #00ffff, #ff00ff, #0aff9d);
+    opacity: 0.6;
+  }
+
+  /* Links: neon color + subtle glow + animated underline */
+  .prose a {
+    color: #0aff9d; /* base link color */
+    text-decoration: none;
+    text-shadow: 0 0 6px rgba(10, 255, 157, 0.6);
+    background-image: linear-gradient(90deg, #00ffff, #ff00ff, #0aff9d);
+    background-size: 0% 2px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition:
+      background-size 160ms ease,
+      color 160ms ease;
+  }
+  .prose a:hover {
+    color: #00ffff;
+    background-size: 100% 2px;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+  }
+
+  /* Code block: clearer separation from page bg */
+  pre[data-theme] {
+    background: rgba(10, 11, 14, 0.92) !important; /* slightly lighter than page bg */
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow:
+      0 0 12px rgba(255, 0, 255, 0.18),
+      inset 0 0 24px rgba(0, 255, 255, 0.12);
+  }
+
+  /* Optional: glassy card utility for callouts/boxes */
+  .glass {
+    background-color: rgba(13, 13, 15, 0.6);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+  }
+
+  /* Optional: neon button utility */
+  .btn-neon {
+    @apply inline-flex items-center rounded-md px-4 py-2 font-medium;
+    color: #0d0d0f;
+    background: linear-gradient(90deg, #00ffff, #ff00ff);
+    box-shadow:
+      0 0 12px rgba(255, 0, 255, 0.35),
+      0 0 12px rgba(0, 255, 255, 0.35);
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+  .btn-neon:hover {
+    transform: translateY(-1px);
+    box-shadow:
+      0 0 18px rgba(255, 0, 255, 0.55),
+      0 0 18px rgba(0, 255, 255, 0.55);
+  }
 }

@@ -17,8 +17,8 @@ const config = {
   extensions: ['.svelte', ...mdsvexConfig.extensions],
   // Svelte コンパイラに渡す警告ハンドラ
   onwarn: (warning, handler) => {
-    //  a11y-no-noninteractive-tabindex の警告を無視する
-    if (warning.code === 'a11y-no-noninteractive-tabindex') return;
+    //  a11y_no_noninteractive_tabindex の警告を無視する
+    if (warning.code === 'a11y_no_noninteractive_tabindex') return;
     handler(warning);
   },
 };

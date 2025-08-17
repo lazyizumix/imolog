@@ -11,6 +11,7 @@
 
 <svelte:head>
   <link rel="icon" href={icon} />
+  <link rel="canonical" href="https://imolog.lazyizumix.com" />
   <title>imolog</title>
   <meta name="description" content="izumixのなんでもブログ" />
 </svelte:head>
